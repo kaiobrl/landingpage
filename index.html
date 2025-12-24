@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaioBrl | Fullstack Developer & UI Designer</title>
+    <meta name="description" content="Transformando ideias em experiências digitais de alto impacto.">
+    <meta name="keywords" content="desenvolvedor fullstack, ui designer, freelancer, react, node.js, javascript, html, css, tailwind, portfolio, landing page">
+    <meta name="author" content="KaioBrl">
+    <link rel="canonical" href="https://kaiobrl.github.io/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kaiobrl.github.io/">
+    <meta property="og:title" content="KaioBrl | Fullstack Developer & UI Designer">
+    <meta property="og:description" content="Transformando ideias em experiências digitais de alto impacto. Especialista em React, Node.js e UI/UX.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=1200&auto=format&fit=crop">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://kaiobrl.github.io/">
+    <meta property="twitter:title" content="KaioBrl | Fullstack Developer & UI Designer">
+    <meta property="twitter:description" content="Transformando ideias em experiências digitais de alto impacto. Especialista em React, Node.js e UI/UX.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=1200&auto=format&fit=crop">
+
+    <!-- Favicon (placeholder) -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Configurações Personalizadas do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6', // Teal
+                            600: '#0d9488',
+                            900: '#134e4a',
+                        },
+                        dark: {
+                            900: '#0f172a', // Slate 900
+                            950: '#020617', // Slate 950
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* CSS Customizado para detalhes finos */
+        body {
+            background-color: #020617;
+            color: #f8fafc;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #2dd4bf, #3b82f6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+            animation: move 10s infinite alternate;
+        }
+
+        @keyframes move {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(20px, -20px) scale(1.1);
+            }
+        }
+
+        /* Hide scrollbar for clean look in some elements */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-brand-500 selection:text-white relative overflow-x-hidden">
+
+    <!-- Background Elements -->
+    <div class="blob bg-purple-600 w-96 h-96 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="blob bg-brand-500 w-80 h-80 rounded-full bottom-0 right-0 translate-x-1/3 translate-y-1/3"></div>
+
+    <!-- Header / Navbar -->
+    <header
+        class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-white/5 bg-dark-950/70 backdrop-blur-md">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="font-display font-bold text-2xl tracking-tight text-white flex items-center gap-2">
+                <span
+                    class="w-8 h-8 bg-gradient-to-br from-brand-500 to-blue-600 rounded-lg flex items-center justify-center text-sm">CS</span>
+                CaioSilva
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-300">
+                <a href="#sobre" class="hover:text-white transition-colors">Sobre</a>
+                <a href="#servicos" class="hover:text-white transition-colors">Serviços</a>
+                <a href="#portfolio" class="hover:text-white transition-colors">Projetos</a>
+                <a href="#depoimentos" class="hover:text-white transition-colors">Depoimentos</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="hidden md:block">
+                <a href="#contato"
+                    class="group relative px-6 py-2.5 rounded-full bg-white text-dark-950 font-semibold text-sm transition-all hover:bg-brand-500 hover:text-white hover:shadow-[0_0_20px_rgba(20,184,166,0.5)]">
+                    Vamos Conversar
+                    <i class="fa-solid fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white text-xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-900 border-b border-slate-800 p-6 absolute w-full">
+            <nav class="flex flex-col gap-4 text-center">
+                <a href="#sobre" class="text-slate-300 hover:text-brand-500">Sobre</a>
+                <a href="#servicos" class="text-slate-300 hover:text-brand-500">Serviços</a>
+                <a href="#portfolio" class="text-slate-300 hover:text-brand-500">Projetos</a>
+                <a href="#contato" class="bg-brand-500 text-white py-2 rounded-lg">Vamos Conversar</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 container mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+
+            <!-- Text Content -->
+            <div class="lg:w-1/2 text-center lg:text-left z-10">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 text-brand-500 text-xs font-semibold tracking-wide uppercase mb-6">
+                    <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                    Disponível para novos projetos
+                </div>
+
+                <h1 class="font-display font-bold text-5xl lg:text-7xl leading-tight mb-6">
+                    Construindo o <br>
+                    <span class="text-gradient">Futuro Digital</span>
+                </h1>
+
+                <p class="text-slate-400 text-lg lg:text-xl leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
+                    Especialista em criar interfaces web que unem estética premium e performance extrema. Transformo sua
+                    visão em um produto digital escalável.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                    <a href="#portfolio"
+                        class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-brand-500 to-blue-600 text-white font-bold text-center transition-all hover:opacity-90 hover:shadow-lg hover:shadow-brand-500/25">
+                        Ver Projetos
+                    </a>
+                    <a href="#servicos"
+                        class="w-full sm:w-auto px-8 py-4 rounded-full border border-slate-700 bg-slate-900/50 text-white font-semibold text-center hover:bg-slate-800 transition-all">
+                        Meus Serviços
+                    </a>
+                </div>
+
+                <!-- Social Proof Small -->
+                <div class="mt-10 flex items-center justify-center lg:justify-start gap-4 text-slate-500 text-sm">
+                    <div class="flex -space-x-3">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=64&h=64"
+                            alt="imga" class="w-10 h-10 rounded-full border-2 border-dark-950">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=64&h=64"
+                            alt="imgb" class="w-10 h-10 rounded-full border-2 border-dark-950">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=64&h=64"
+                            alt="imgc" class="w-10 h-10 rounded-full border-2 border-dark-950">
+                    </div>
+                    <p>Confiado por +50 clientes globais</p>
+                </div>
+            </div>
+
+            <!-- Hero Image / Visual -->
+            <div class="lg:w-1/2 relative z-10">
+                <div
+                    class="relative rounded-2xl overflow-hidden shadow-2xl shadow-brand-500/10 border border-slate-800 group">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-dark-950 via-transparent to-transparent opacity-60">
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=1000&auto=format&fit=crop"
+                        alt="Workspace Setup"
+                        class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105">
+
+                    <!-- Floating Card -->
+                    <div
+                        class="absolute bottom-6 left-6 right-6 p-4 glass-card rounded-xl flex items-center gap-4 animate-[bounce_3s_infinite]">
+                        <div
+                            class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
+                            <i class="fa-solid fa-code text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-white font-bold">Código Limpo</p>
+                            <p class="text-xs text-slate-300">Otimizado para SEO e Performance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logo Strip (Trusted By) -->
+    <div class="border-y border-slate-800 bg-dark-900/50">
+        <div class="container mx-auto px-6 py-10">
+            <p class="text-center text-slate-500 text-sm font-medium mb-6 uppercase tracking-widest">Tecnologias que
+                domino</p>
+            <div
+                class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <i class="fa-brands fa-react text-4xl hover:text-blue-400 transition-colors cursor-pointer"></i>
+                <i class="fa-brands fa-node text-4xl hover:text-green-500 transition-colors cursor-pointer"></i>
+                <i class="fa-brands fa-js text-4xl hover:text-yellow-400 transition-colors cursor-pointer"></i>
+                <i class="fab fa-html5 text-4xl hover:text-pink-400 transition-colors cursor-pointer"></i>
+                <i class="fab fa-css3-alt text-4xl hover:text-blue-300 transition-colors cursor-pointer"></i>
+                <i class="fa-solid fa-wind text-4xl hover:text-blue-300 transition-colors cursor-pointer"></i>
+                <i class="fa-brands fa-bootstrap text-4xl hover:text-blue-300 transition-colors cursor-pointer"></i>
+                <i class="fa-brands fa-sass text-4xl hover:text-blue-300 transition-colors cursor-pointer"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section (Bento Grid) -->
+    <section id="servicos" class="py-24 container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="font-display font-bold text-3xl md:text-4xl mb-4">Soluções <span class="text-brand-500">Sob
+                    Medida</span></h2>
+            <p class="text-slate-400 max-w-2xl mx-auto">Não entrego apenas código. Entrego soluções estratégicas
+                desenhadas para escalar o seu negócio.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Large Card -->
+            <div
+                class="md:col-span-2 p-8 rounded-3xl glass-card hover:border-brand-500/50 transition-colors group relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <i class="fa-solid fa-laptop-code text-9xl text-white"></i>
+                </div>
+                <div class="w-14 h-14 rounded-2xl bg-blue-600/20 flex items-center justify-center text-blue-400 mb-6">
+                    <i class="fa-solid fa-layer-group text-2xl"></i>
+                </div>
+                <h3 class="font-display font-bold text-2xl mb-3">Desenvolvimento Fullstack</h3>
+                <p class="text-slate-400 mb-6 leading-relaxed">
+                    Aplicações web completas, rápidas e seguras. Do banco de dados à interface do usuário, utilizando
+                    React, Node.js e arquitetura serverless. Foco total em escalabilidade.
+                </p>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Single Page
+                        Applications (SPA)</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Integração de
+                        APIs Complexas</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Dashboards
+                        Administrativos</li>
+                </ul>
+            </div>
+
+            <!-- Tall Card -->
+            <div
+                class="md:row-span-2 p-8 rounded-3xl glass-card hover:border-brand-500/50 transition-colors flex flex-col justify-between group">
+                <div>
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-purple-600/20 flex items-center justify-center text-purple-400 mb-6">
+                        <i class="fa-solid fa-pen-nib text-2xl"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl mb-3">UI/UX Design</h3>
+                    <p class="text-slate-400 mb-4">
+                        Interfaces intuitivas que guiam o usuário. Prototipagem de alta fidelidade no Figma e Design
+                        Systems consistentes.
+                    </p>
+                </div>
+                <div class="mt-4 relative h-48 rounded-xl overflow-hidden border border-slate-700">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=500"
+                        class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                        alt="UI Design">
+                </div>
+            </div>
+
+            <!-- Small Card 1 -->
+            <div class="p-8 rounded-3xl glass-card hover:border-brand-500/50 transition-colors">
+                <div class="w-12 h-12 rounded-xl bg-pink-600/20 flex items-center justify-center text-pink-400 mb-4">
+                    <i class="fa-solid fa-mobile-screen text-xl"></i>
+                </div>
+                <h3 class="font-display font-bold text-xl mb-2">Mobile First</h3>
+                <p class="text-slate-400 text-sm">Sites 100% responsivos que funcionam perfeitamente em qualquer
+                    dispositivo.</p>
+            </div>
+
+            <!-- Small Card 2 -->
+            <div class="p-8 rounded-3xl glass-card hover:border-brand-500/50 transition-colors">
+                <div class="w-12 h-12 rounded-xl bg-green-600/20 flex items-center justify-center text-green-400 mb-4">
+                    <i class="fa-solid fa-bolt text-xl"></i>
+                </div>
+                <h3 class="font-display font-bold text-xl mb-2">Performance</h3>
+                <p class="text-slate-400 text-sm">Otimização de Core Web Vitals para garantir carregamento instantâneo e
+                    melhor SEO.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 bg-dark-900 border-t border-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <h2 class="font-display font-bold text-3xl md:text-4xl mb-2">Trabalhos <span
+                            class="text-gradient">Recentes</span></h2>
+                    <p class="text-slate-400">Uma seleção de projetos que definem meu padrão de qualidade.</p>
+                </div>
+                <a href="#" class="text-brand-500 hover:text-brand-400 font-medium flex items-center gap-2 group">
+                    Ver GitHub <i class="fa-brands fa-github text-lg group-hover:rotate-12 transition-transform"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="group relative rounded-2xl overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+                        alt="Project 1"
+                        class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-8 translate-y-4 group-hover:translate-y-0">
+                        <span class="text-brand-500 text-xs font-bold uppercase tracking-wider mb-2">Fintech</span>
+                        <h3 class="font-display font-bold text-2xl text-white mb-2">NovaBank App</h3>
+                        <p class="text-slate-300 text-sm mb-4">Dashboard financeiro completo com React e D3.js para
+                            visualização de dados em tempo real.</p>
+                        <span class="inline-block text-white border-b border-brand-500 pb-1 text-sm font-medium">Ver
+                            Case Study</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group relative rounded-2xl overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1481487484168-9b995ecc168d?auto=format&fit=crop&q=80&w=800"
+                        alt="Project 2"
+                        class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-8 translate-y-4 group-hover:translate-y-0">
+                        <span class="text-brand-500 text-xs font-bold uppercase tracking-wider mb-2">E-commerce</span>
+                        <h3 class="font-display font-bold text-2xl text-white mb-2">Luxe Fashion</h3>
+                        <p class="text-slate-300 text-sm mb-4">Plataforma de e-commerce headless utilizando Shopify e
+                            Next.js.</p>
+                        <span class="inline-block text-white border-b border-brand-500 pb-1 text-sm font-medium">Ver
+                            Case Study</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="group relative rounded-2xl overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+                        alt="Project 3"
+                        class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-8 translate-y-4 group-hover:translate-y-0">
+                        <span class="text-brand-500 text-xs font-bold uppercase tracking-wider mb-2">SaaS</span>
+                        <h3 class="font-display font-bold text-2xl text-white mb-2">TaskMaster</h3>
+                        <p class="text-slate-300 text-sm mb-4">Software de gestão de produtividade com funcionalidades
+                            offline-first.</p>
+                        <span class="inline-block text-white border-b border-brand-500 pb-1 text-sm font-medium">Ver
+                            Case Study</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="depoimentos" class="py-24 container mx-auto px-6">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-center mb-16">O que os clientes <span
+                class="text-brand-500">dizem</span></h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 relative">
+                <i class="fa-solid fa-quote-right absolute top-8 right-8 text-slate-700 text-4xl"></i>
+                <div class="flex items-center gap-1 text-yellow-500 mb-6 text-sm">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-slate-300 mb-8 leading-relaxed">"O Alex transformou completamente a nossa plataforma. A
+                    atenção aos detalhes e a qualidade do código superaram todas as nossas expectativas.
+                    Profissionalismo puro."</p>
+                <div class="flex items-center gap-4">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&h=100"
+                        class="w-12 h-12 rounded-full object-cover border border-slate-700" alt="Client">
+                    <div>
+                        <h4 class="font-bold text-white">Roberto Carlos</h4>
+                        <p class="text-xs text-slate-500">CEO, TechFlow</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div
+                class="p-8 rounded-2xl bg-gradient-to-b from-slate-800 to-slate-900 border border-brand-500/30 relative transform md:-translate-y-4 shadow-xl">
+                <i class="fa-solid fa-quote-right absolute top-8 right-8 text-brand-500/20 text-4xl"></i>
+                <div class="flex items-center gap-1 text-yellow-500 mb-6 text-sm">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-slate-300 mb-8 leading-relaxed">"Contratar o Alex foi o melhor investimento do ano. Ele
+                    não só entregou o design, mas sugeriu melhorias na UX que aumentaram nossa conversão em 40%."</p>
+                <div class="flex items-center gap-4">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&h=100"
+                        class="w-12 h-12 rounded-full object-cover border border-slate-700" alt="Client">
+                    <div>
+                        <h4 class="font-bold text-white">Fernanda Costa</h4>
+                        <p class="text-xs text-slate-500">Marketing, Studio A</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 relative">
+                <i class="fa-solid fa-quote-right absolute top-8 right-8 text-slate-700 text-4xl"></i>
+                <div class="flex items-center gap-1 text-yellow-500 mb-6 text-sm">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-slate-300 mb-8 leading-relaxed">"Rápido, eficiente e com um senso estético incrível. O
+                    site ficou exatamente como imaginávamos, moderno e responsivo."</p>
+                <div class="flex items-center gap-4">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=100&h=100"
+                        class="w-12 h-12 rounded-full object-cover border border-slate-700" alt="Client">
+                    <div>
+                        <h4 class="font-bold text-white">Eduardo Araujo</h4>
+                        <p class="text-xs text-slate-500">Founder, Startup X</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section (Accordion) -->
+    <section class="py-24 bg-dark-900 border-y border-slate-800">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="font-display font-bold text-3xl mb-12 text-center">Perguntas Frequentes</h2>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                        onclick="toggleFaq(this)">
+                        <span class="font-semibold text-lg">Como funciona o processo de pagamento?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 text-slate-400">
+                        <p class="pb-6">Geralmente trabalho com 50% de entrada para iniciar o projeto e 50% na entrega
+                            final. Para projetos maiores, podemos dividir em marcos (milestones) mensais.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                        onclick="toggleFaq(this)">
+                        <span class="font-semibold text-lg">Você oferece suporte após a entrega?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 text-slate-400">
+                        <p class="pb-6">Sim! Ofereço 30 dias de suporte gratuito para correção de bugs. Também possuo
+                            pacotes de manutenção mensal para atualizações e melhorias contínuas.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                        onclick="toggleFaq(this)">
+                        <span class="font-semibold text-lg">Qual o prazo médio de entrega?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 px-6 text-slate-400">
+                        <p class="pb-6">Depende da complexidade. Uma Landing Page leva de 5 a 10 dias. Um site
+                            institucional cerca de 20 dias. Sistemas web complexos são avaliados caso a caso.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section id="contato" class="py-24 container mx-auto px-6">
+        <div
+            class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-brand-900 to-blue-900 p-12 md:p-20 text-center">
+            <!-- Background Decoration -->
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
+            </div>
+
+            <div class="relative z-10 max-w-2xl mx-auto">
+                <h2 class="font-display font-bold text-3xl md:text-5xl mb-6 text-white">Pronto para elevar o nível do
+                    seu projeto?</h2>
+                <p class="text-blue-100 mb-10 text-lg">Minha agenda é limitada. Vamos conversar hoje para garantir que
+                    seu projeto saia do papel com excelência.</p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="mailto:formatolivre1@gmail.com"
+                        class="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-blue-900 font-bold hover:bg-slate-100 transition-colors shadow-xl">
+                        Enviar E-mail
+                    </a>
+                    <a href="https://api.whatsapp.com/send/?phone=5583987922753&text&type=phone_number&app_absent=0"
+                        class="w-full sm:w-auto px-8 py-4 rounded-full border border-white/30 bg-white/10 text-white font-semibold hover:bg-white/20 transition-colors backdrop-blur-sm">
+                        <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-950 pt-16 pb-8 border-t border-slate-900">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <a href="#" class="font-display font-bold text-2xl text-white mb-4 block">CaioSilva</a>
+                    <p class="text-slate-500 max-w-sm">Desenvolvedor Fullstack e UI Designer focado em criar
+                        experiências digitais que geram resultados reais para empresas visionárias.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2 text-slate-500 text-sm">
+                        <li><a href="#sobre" class="hover:text-brand-500 transition-colors">Sobre</a></li>
+                        <li><a href="#servicos" class="hover:text-brand-500 transition-colors">Serviços</a></li>
+                        <li><a href="#portfolio" class="hover:text-brand-500 transition-colors">Portfolio</a></li>
+                        <li><a href="#contato" class="hover:text-brand-500 transition-colors">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Social</h4>
+                    <div class="flex gap-4">
+                        <a href="https://www.linkedin.com/in/kaiobrl/"
+                            class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-brand-500 hover:text-white transition-all">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/Kaiobrl"
+                            class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-brand-500 hover:text-white transition-all">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/formato_livre/"
+                            class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-brand-500 hover:text-white transition-all">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-600 text-xs">
+                <p>&copy; 2025 Caio Silva. Todos os direitos reservados.</p>
+                <p>codificado<i class="fa-solid fa-heart text-red-500 mx-1"></i>por mim.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts simples para interatividade -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // FAQ Accordion Logic
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+
+            // Toggle max-height for smooth slide
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.style.transform = 'rotate(0deg)';
+                content.classList.remove('pb-6');
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = 'rotate(180deg)';
+                content.classList.add('pb-6');
+            }
+        }
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+
+</html>
